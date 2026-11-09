@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="用轻量图像模型，把照片重新画成火焰、海浪或云。图片在浏览器本地处理。">
+  <meta name="color-scheme" content="dark">
+  <title>元素显影 · Elemental Lens</title>
+  <link rel="icon" href="./assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <header class="mast shell">
+    <a class="brand" href="./" aria-label="元素显影首页"><img src="./assets/mark.svg" alt="" width="31" height="31"><span>元素显影</span></a>
+    <a class="text-link" href="#method">关于实验 <span aria-hidden="true">↘</span></a>
+  </header>
+  <main class="shell">
+    <section class="intro" aria-labelledby="title">
+      <p class="eyebrow"><span></span> ELEMENTAL LENS / 图像实验</p>
+      <h1 id="title">如果一张照片，<br>能变成<span>火、海浪和云？</span></h1>
+      <p class="lead">选一张图，让模型沿着它的明暗和轮廓，重新画出另一种自然景象。</p>
+    </section>
+
+    <section class="studio" aria-label="图像生成工作台">
+      <aside class="controls">
+        <div class="control-block">
+          <h2><span class="index">01</span> 输入图像</h2>
+          <input type="file" id="file" accept="image/jpeg,image/png,image/webp,image/bmp,image/avif,image/gif" hidden>
+          <button class="drop" id="pick" type="button" aria-describedby="file-help">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M12 16V4m-4 4 4-4 4 4M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>选择或拖入图片</span>
+            <small id="file-help">JPG / PNG / WebP 等 · ≤ 20 MB</small>
+          </button>
+          <div class="example-row"><button id="sample" type="button" class="plain">试用手形示例 ↗</button><span id="filename">手形示例</span></div>
+        </div>
+        <fieldset class="control-block style-picker">
+          <legend><span class="index">02</span> 选择元素</legend>
+          <label class="style-option">
+            <input type="radio" name="style" value="fire" checked>
+            <span class="swatch fire" aria-hidden="true"></span><span>火焰 <small>FIRE</small></span>
+          </label>
+          <label class="style-option">
+            <input type="radio" name="style" value="wave">
+            <span class="swatch wave" aria-hidden="true"></span><span>海浪 <small>WAVE</small></span>
+          </label>
+          <label class="style-option">
+            <input type="radio" name="style" value="cloud">
+            <span class="swatch cloud" aria-hidden="true"></span><span>云 <small>CLOUD</small></span>
+          </label>
+        </fieldset>
+        <div class="control-block adjustments">
+          <label for="detail" class="range-label"><span>保留轮廓</span><output id="detail-value" for="detail">65</output></label>
+          <input id="detail" type="range" min="0" max="100" value="65">
+          <div class="range-ends"><span>更抽象</span><span>更接近原图</span></div>
+          <label class="check"><input id="invert" type="checkbox"> 反转明暗</label>
+        </div>
+        <button id="generate" class="generate" type="button" disabled>生成风格图 <span aria-hidden="true">→</span></button>
+      </aside>
+
+      <div class="gallery">
+        <div class="gallery-bar"><div><span class="index">03</span> 对照预览</div><button id="save" class="plain" type="button" disabled>下载 PNG <span aria-hidden="true">↓</span></button></div>
+        <div class="frames">
+          <figure>
+            <figcaption><span>原始图像</span><small>INPUT</small></figcaption>
+            <div class="frame"><canvas id="original" width="240" height="240" aria-label="原始图像预览"></canvas></div>
+          </figure>
+          <figure>
+            <figcaption><span id="output-label">火焰重构</span><small>OUTPUT</small></figcaption>
+            <div id="result-frame" class="frame"><canvas id="result" width="240" height="240" aria-label="生成图像预览"></canvas></div>
+          </figure>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">正在准备手形示例…</p>
+        <div class="local"><span aria-hidden="true"></span> 本地生成 · 原图不会上传</div>
+      </div>
+    </section>
+
+    <section id="method" class="method">
+      <div><p class="eyebrow">NOTES / 01</p><h2>模型怎么看你的图？</h2></div>
+      <div>
+        <p>它先把图像压成一张粗略的明暗图，再用训练时见过的火焰、海浪或云来重画。轮廓滑杆控制保留多少细节。主体偏暗、背景偏亮时，可以试试反转明暗。</p>
+        <p>灵感来自 <a href="https://memo.tv/projects/2017/gloomy-sunday/" target="_blank" rel="noreferrer">Memo Akten 的《Gloomy Sunday》</a>。本实验用三组从零训练的小模型，按整张图生成。输出可能改变指缝、五官或背景。</p>
+      </div>
+    </section>
+  </main>
+  <footer class="shell foot"><span>元素显影 / 轻量图像生成实验</span><a href="https://arxiv.org/abs/2003.00902" target="_blank" rel="noreferrer">原作论文 ↗</a></footer>
+</body>
+</html>
