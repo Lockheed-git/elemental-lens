@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="480" height="480">
+  <defs>
+    <radialGradient id="back"><stop stop-color="#403c3a"/><stop offset="1" stop-color="#1a1a1c"/></radialGradient>
+    <linearGradient id="palm" x1="0%" y1="100%" x2="70%" y2="0%">
+      <stop stop-color="#74635c"/><stop offset=".27" stop-color="#9d8371"/><stop offset=".60" stop-color="#dbc0a7"/><stop offset=".83" stop-color="#edd8b9"/><stop offset="1" stop-color="#f4e6cc"/>
+    </linearGradient>
+    <pattern id="paper" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1" cy="2" r=".7" fill="#eee8dc" opacity=".18"/><circle cx="5" cy="5" r=".55" fill="#0e1012" opacity=".18"/></pattern>
+    <path id="shape" d="M168 489c6-43 10-76 2-105-6-19-25-31-45-48l-43-47c-13-13-10-30 2-34 9-3 18 1 31 11l43 28c9 6 14 2 12-11l-16-107c-5-38-14-76-12-93 1-11 7-17 16-16 12 0 16 9 20 22l38 127c2 8 8 7 8-1L216 70c-1-18 6-28 17-27 11 1 16 11 18 24l14 146c1 7 7 7 8 0l20-126c3-15 10-25 21-22 9 3 12 10 10 23l-12 139c-1 8 4 10 8 2l32-83c7-18 15-20 22-17 8 4 10 12 6 26l-20 95c-4 20-5 45-6 73-1 32-11 59-34 77l-9 89Z"/>
+    <clipPath id="clip"><use href="#shape"/></clipPath>
+  </defs>
+  <rect width="480" height="480" fill="url(#back)"/>
+  <use href="#shape" transform="translate(9 11)" fill="#0e0d0e" opacity=".45"/>
+  <use href="#shape" fill="url(#palm)"/>
+  <g clip-path="url(#clip)" fill="none" stroke-linecap="round">
+    <path d="M184 306c32-31 52-44 125-45M202 346c27 10 71 1 96-11M201 310c16 4 35 21 43 48M193 381c28 18 63 25 101 18" stroke="#856652" stroke-width="5" opacity=".42"/>
+    <path d="m161 86 45 145m29-159 13 141m61-125-14 130m71-75-27 86" stroke="#fff4dc" stroke-width="5" opacity=".32"/>
+  </g>
+  <rect width="480" height="480" fill="url(#paper)" opacity=".48"/>
+</svg>

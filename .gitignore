@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+/training/photos/
+/training/runs/
+/training/fixtures/

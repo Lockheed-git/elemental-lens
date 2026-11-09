@@ -1,0 +1,26 @@
+{
+  "fire": {
+    "photos": 13,
+    "steps": 2000,
+    "size": 96,
+    "params": 19403,
+    "probe_delta": 0.4402,
+    "seconds": 52.8
+  },
+  "wave": {
+    "photos": 14,
+    "steps": 2000,
+    "size": 96,
+    "params": 19403,
+    "probe_delta": 0.4807,
+    "seconds": 45.8
+  },
+  "cloud": {
+    "photos": 12,
+    "steps": 2000,
+    "size": 96,
+    "params": 19403,
+    "probe_delta": 0.361,
+    "seconds": 35.0
+  }
+}
